@@ -1,0 +1,26 @@
+doctype html
+html
+	head
+		title Menchi's Great Escape
+		script(src='./lib/requirejs/require.js')
+		script.
+			requirejs.config({
+				baseUrl: 'lib',
+				paths: {
+					EventEmitter: 'eventEmitter/EventEmitter',
+					msl: 'msl/dist',
+					pixi: 'pixi/bin/pixi'
+				}
+			})
+
+			require([ "../script/index" ])
+
+			// Don't let backspace go back a page.
+			document.onkeydown = event => {
+				if (event.keyCode === 8)
+					event.preventDefault()
+			}
+
+		link(rel='stylesheet' href='/style/index.css')
+	body
+		div#game
